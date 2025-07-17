@@ -2,36 +2,47 @@ import React, { useContext } from 'react'
 import { createContext, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { AddToCartContext } from './AddToCart/AddToCartProvider';
-
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 
 
-export const AuthenticationContext = createContext()
+export const SellerContext = createContext()
 
 
-const AuthenticationProvider = ({ children }) => {
+const SellerProvider = ({ children }) => {
+    const [sellerCredentials,setSellerCredentials] = useState({
+     name:'hashir',
+     email:'hashir@gmail.com',
+     category:'kitchen',
+     inventory:'40',
+     price:'40',
+     image:''
+    })
     const navigate = useNavigate()
-    const [loginPicture, setLoginPicture] = useState(
-        localStorage.getItem('loginPicture' || null)
+    const [sellerLoginPicture, setsellerLoginPicture] = useState(
+        localStorage.getItem('sellerLoginPicture' || null)
     )
-    const [isLoginUser, setIsLoginUser] = useState(
-        localStorage.getItem('isLoginUser' || false)
+    const [sellerLoginStatus, setsellerLoginStatus] = useState(
+        localStorage.getItem('sellerLoginStatus' || false)
     )
+
+    // user credentials
+     const [userCredentials, setUserCredentials] = useState({
+            name: '',
+            email: '',
+            password: ''
+        })
+    
     
 
-    const { fetchingAllCartItems } = useContext(AddToCartContext)
-    const [userCredentials, setUserCredentials] = useState({
-        name: '',
-        email: '',
-        password: ''
-    })
+  
 
     const baseUrl = "http://localhost:5000"
 
+    //login seller
+
     const handleLoginUser = async () => {
-        const loginUser = await fetch(`${baseUrl}/auth/login`, {
+        const loginUser = await fetch(`${baseUrl}/seller/seller-login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,19 +55,19 @@ const AuthenticationProvider = ({ children }) => {
             console.log(result)
             toast.success(result.success)
             setTimeout(() => {
-                navigate('/')
+                navigate('/startselling')
             }, 2000);
             setUserCredentials({
                 email: '',
                 password: ''
             })
             console.log(loginUser.data)
-            fetchingAllCartItems()
+
 
 
             //store the status of logged in user in local storage 
-            setIsLoginUser(true)
-            localStorage.setItem('isLoginUser', true)
+            setsellerLoginStatus(true)
+            localStorage.setItem('sellerLoginStatus', true)
         }
 
         else if (loginUser.status === 400) {
@@ -65,10 +76,10 @@ const AuthenticationProvider = ({ children }) => {
         }
     }
 
-    // signup user
+    // signup seller
 
     const handleSignUpUser = async () => {
-        const signupUser = await fetch(`${baseUrl}/auth/signup`, {
+        const signupUser = await fetch(`${baseUrl}/seller/seller-login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,7 +91,7 @@ const AuthenticationProvider = ({ children }) => {
             const result = await signupUser.json()
             console.log(signupUser)
             setTimeout(() => {
-                navigate('/login')
+                navigate('/sellerlogin')
             }, 2000);
             console.log(result)
             toast.success(result.success)
@@ -104,7 +115,7 @@ const AuthenticationProvider = ({ children }) => {
             console.log("Google user info: ", decoded);
 
             // Send token to backend
-            const res = await fetch("http://localhost:5000/auth/google-login", {
+            const res = await fetch("http://localhost:5000/seller/seller-google-login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -118,14 +129,14 @@ const AuthenticationProvider = ({ children }) => {
 
             if (res.ok) {
                 console.log(data.user.picture);
-                fetchingAllCartItems()
-                setLoginPicture(data.user.picture)
-                localStorage.setItem('loginPicture', data.user.picture)
+                
+                setsellerLoginPicture(data.user.picture)
+                localStorage.setItem('sellerLoginPicture', data.user.picture)
 
                 //store the status of logged in user in local storage 
-                setIsLoginUser(true)
-                localStorage.setItem('isLoginUser', true)
-                navigate("/");
+                setsellerLoginStatus(true)
+                localStorage.setItem('sellerLoginStatus', true)
+                navigate("/startselling");
             } else {
                 console.error(data.error);
             }
@@ -134,10 +145,10 @@ const AuthenticationProvider = ({ children }) => {
         }
     }
 
-    // logout user 
+    // logout seller 
 
     const logOutUser = async (req, res) => {
-        const response = await fetch('http://localhost:5000/auth/logout', {
+        const response = await fetch('http://localhost:5000/seller/seller-logout', {
 
             method: 'GET',
             headers: {
@@ -152,23 +163,36 @@ const AuthenticationProvider = ({ children }) => {
             console.log(data)
             toast.success(data.success)
             
-            localStorage.removeItem('loginPicture')
-            setLoginPicture(null)
-            setIsLoginUser(false)
-            localStorage.removeItem('isLoginUser')
-            fetchingAllCartItems()
+            localStorage.removeItem('sellerLoginPicture')
+            setsellerLoginPicture(null)
+            setsellerLoginStatus(false)
+            localStorage.removeItem('sellerLoginStatus')
+            
         }
         else{
             toast.error("Something went wrong")
         }
     }
+
+    // seller upload product 
+
+    const sellerProductUpload  = async (formData)=>{
+        const response = await fetch('http://localhost:5000/seller/upload-product',{
+            "method":"POST",
+            body:formData, 
+            credentials:"include"
+            
+        })
+        const data = await response.json()
+        console.log(data.success)
+    }
     return (
         <div>
-            <AuthenticationContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, loginPicture, logOutUser, isLoginUser }}>
+            <SellerContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, sellerLoginPicture, logOutUser, sellerLoginStatus,sellerCredentials,setSellerCredentials,sellerProductUpload }}>
                 {children}
-            </AuthenticationContext.Provider>
+            </SellerContext.Provider>
         </div>
     )
 }
 
-export default AuthenticationProvider
+export default SellerProvider

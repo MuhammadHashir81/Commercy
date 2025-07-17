@@ -1,6 +1,5 @@
 import React from 'react'
 import { useContext,useState } from 'react'
-import { AuthenticationContext } from './ContextApi/AuthenticationProvider'
 import { RxCross1 } from "react-icons/rx";
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -10,10 +9,10 @@ import  { Toaster } from 'react-hot-toast';
 import { TbLockPassword } from "react-icons/tb";
 import { FaRegUser } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
+import { SellerContext } from '../ContextApi/Seller/SellerProvider';
 
 
-
-const Signup = () => {
+const SellerSignup = () => {
     const [check,setCheck] = useState(true)
 
     const handleCheck = ()=>{
@@ -22,7 +21,7 @@ const Signup = () => {
     const navigate = useNavigate()
 
     const backToHome = () => {
-        navigate('/')
+        navigate('/selleraccount')
     }
 
     const signUpVisibility = (e) => {
@@ -31,7 +30,7 @@ const Signup = () => {
         }
 
     }
-    const { handleSignUpUser, userCredentials, setUserCredentials } = useContext(AuthenticationContext)
+    const { handleSignUpUser, userCredentials, setUserCredentials } = useContext(SellerContext)
 
     const handleInputChange = (e)=>{
        const {name,value} = e.target
@@ -132,4 +131,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default SellerSignup

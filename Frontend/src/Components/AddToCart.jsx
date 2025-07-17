@@ -1,10 +1,12 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AddToCartContext } from './ContextApi/AddToCart/AddToCartProvider'
-
+import { NavLink } from 'react-router-dom'
+import { AuthenticationContext } from './ContextApi/AuthenticationProvider'
 const AddToCart = () => {
   const { selectedItems,cartItems,deletingSingleCartItem } = useContext(AddToCartContext)
-  console.log(cartItems)
+  const {isLoginUser} = useContext(AuthenticationContext)
+  console.log(isLoginUser)
 
 
   const handleDelete = (id)=>{
@@ -15,9 +17,19 @@ const AddToCart = () => {
   return (
     <div>
     
-      <div className=' max-w-screen-2xl mx-auto px-32 py-10 '>
+      <div className=' max-w-screen-2xl mx-auto px-32 py-10 min-h-screen'>
          
-        <h1 className='text-5xl  font-bold'>Cart Items</h1>
+         {
+          isLoginUser ? (
+
+            <h1 className='text-5xl  font-bold'>Cart Items</h1>
+          ):(
+            <div className='bg-black p-10 rounded-md'>
+              <h1 className='text-white text-3xl font-bold my-8'>Your cart is empty you have to login to see your cart</h1>
+              <NavLink className='font-semibold shadow-sm rounded-4xl  bg-amber-500 h-fit px-7 py-3 ' to='/signup' >Signup</NavLink>
+            </div>
+          )
+         }
         <div className='bg-gray-100 mt-20 flex flex-wrap  ' >
           
           {

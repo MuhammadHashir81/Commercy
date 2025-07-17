@@ -1,10 +1,11 @@
-import express from 'express'
+import express, { application } from 'express'
 import { authRouter } from './Routes/authRoutes.js'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import { itemRouter } from './Routes/items.js'
 import { cartRouter } from './Routes/cart.route.js'
 import cookieParser from 'cookie-parser'
+import { sellerRouter } from './Seller/Routes/Seller.routes.js'
 const app = express()
 const port = 5000
 
@@ -33,7 +34,7 @@ app.get('/', (req, res) => {
 app.use('/auth',authRouter)
 app.use('/items',itemRouter)
 app.use('/cart',cartRouter)
-
+app.use('/seller',sellerRouter)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -1,7 +1,7 @@
     import jwt from 'jsonwebtoken'
     import bcrypt from 'bcryptjs'
     import pkg from 'bcryptjs'
-    import { User } from '../Model/User.Schema.js'
+    import { Seller } from '../Model/SellerModel.js'
     import { body, validationResult } from 'express-validator'
     const { gensalt } = pkg
     import { OAuth2Client } from "google-auth-library";
@@ -17,7 +17,7 @@
 
     }
 
-    export const validationRules = [
+    export const sellerValidationRules = [
         body('name').notEmpty().withMessage('name is required ').bail().isLength({ min: 3 }).withMessage('name should be atleast three characters long'),
 
         body('email').notEmpty().withMessage('email is required ').bail().isEmail().withMessage('Please enter a valid email address').bail().normalizeEmail(),
@@ -27,7 +27,7 @@
 
     // signup
 
-    export const signup = async (req, res) => {
+    export const sellerSignup = async (req, res) => {
         const { name, email, password } = req.body
         console.log(name, email, password)
         const errors = validationResult(req)
@@ -38,7 +38,7 @@
 
             return
         }
-        const existingEmail = await User.findOne({ email })
+        const existingEmail = await Seller.findOne({ email })
         if (existingEmail) {
             return res.status(400).json({ error: "this email already in use" });
         }
@@ -46,7 +46,7 @@
         const salt = await bcrypt.genSalt()
         const hashedPassword = await bcrypt.hash(password, salt)
         try {
-            const save = await User.create({ name, email, password: hashedPassword })
+            const save = await Seller.create({ name, email, password: hashedPassword })
             console.log(save)
             res.status(200).json({ success: "You are signed up successfully!" })
             console.log(res)
@@ -63,16 +63,16 @@
 
 
 
-    export const login = async (req, res) => {
+    export const sellerLogin = async (req, res) => {
         const { email, password } = req.body
         console.log(email, password)
         try {
-            const findEmail = await User.findOne({ email })
+            const findEmail = await Seller.findOne({ email })
             if (findEmail) {
                 const findPassword = await bcrypt.compare(password, findEmail.password)
                 if (findPassword) {
                     const token = createToken(findEmail._id)
-                    const sendCookie = res.cookie('userJWT', token, { httpOnly: true, maxAge: maxAge * 1000 })
+                    const sendCookie = res.cookie('sellerrJWT', token, { httpOnly: true, maxAge: maxAge * 1000 })
                     res.status(200).json({ success: 'You are logged in successfully!' })
                     return
 
@@ -94,9 +94,9 @@
 
     // logout 
 
-  export  const logOut = async(req,res)=>{
+  export  const sellerLogOut = async(req,res)=>{
         try {
-            const user = res.cookie('userJWT', '', { httpOnly: true, maxAge: 0 })
+            const user = res.cookie('sellerrJWT', '', { httpOnly: true, maxAge: 0 })
 
             res.status(200).json({success:'logout successfully'})
         } catch (error) {
@@ -110,11 +110,9 @@
 
     // login with google
 
-
-
     const client = new OAuth2Client('489577581420-2oucd5ndaojgt4oquei56qf3a6maspqp.apps.googleusercontent.com');
 
-    export const googleLogin = async (req, res) => {
+    export const sellerGoogleLogin = async (req, res) => {
     const { token } = req.body;
 
     try {
@@ -124,9 +122,9 @@
         });
         const { name, email, picture } = ticket.getPayload();
 
-        let user = await User.findOne({ email });
+        let user = await Seller.findOne({ email });
         if (!user) {
-        user = await User.create({
+        user = await Seller.create({
             name,
             email,
             password: null, // No password for Google users
@@ -139,7 +137,7 @@
         });
 
         res
-        .cookie("userJWT", jwtToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
+        .cookie("sellerJWT", jwtToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
         .status(200)
         .json({ message: "login successfully", user });
     } catch (error) {

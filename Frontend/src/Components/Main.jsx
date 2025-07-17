@@ -22,9 +22,6 @@ const Main = () => {
    
     }
 
-
-
-
     useEffect(() => {
         const fetchData = async () => {
             const fetchingData = await fetch('images.json')
@@ -42,48 +39,39 @@ const Main = () => {
         addToCartFunc(item.id,item.title,item.description,item.image,item.price)
     }
     return (
-        <div className=' max-w-screen-2xl mx-auto px-32 py-6'>
+        <div className=' max-w-screen-2xl mx-auto px-10 py-6 '>
             <Commercy />
-            <div>
-                <div className='flex space-x-6'>
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[Pagination]}
-                        className="mySwiper"
-                    >
+            <div className='mt-20'>   
+                <h1 className='text-5xl font-bold mb-6'>Shop on Commercy </h1>
+                <div className='flex flex-wrap items-center bg-gray-100'>
+                
                         {
                             fashion.length > 0 && fashion.map((single, index) => (
-                                <SwiperSlide key={single._id} className='mb-10'>
+                                <div className='w-[30%]  m-3 bg-white p-4 '>
+                                        <h3 className='text-2xl font-bold font-open my-4 '>{single.title}</h3>
                                     <NavLink to={`$item/${single._id}`}>
-                                        <img src={single.image} className='w-full h-[400px] object-cover rounded-xl' alt="" />
+                                        <img src={single.image} className=' w-full h-[450px] object-cover  shadow-md' alt="" />
                                     </NavLink>
-                                    <div className='mt-2 text-center'>
-                                        <h3 className='text-lg font-bold font-primary'>{single.title}</h3>
-                                        <p className='m-4 text-sm text-gray-600 font-open'>{single.description}</p>
-                                        <button onClick={() => handleAddToCart(single)} className='cursor-pointer bg-amber-500 text-black px-5 py-2 rounded-3xl ' >add to cart</button >
-                                        <div>
-                                        <span>${single.price}</span>
+                                    {/* <div className='mt-2 text-center'> */}
+                                        <div className=''>
+                                        <NavLink
+                                         className=' font-semibold m-10 text-sm text-gray-600 font-open'>{single.description}</NavLink>
                                         </div>
+                                        {/* <button onClick={() => handleAddToCart(single)} className='cursor-pointer bg-amber-500 text-black px-5 py-2 rounded-3xl ' >add to cart</button > */}
+                                        <div>
+                                        {/* <span>  ${single.price}</span> */}
+                                        {/* </div> */}
                                     </div>
-                                </SwiperSlide>
+                                </div>
 
 
                             ))
                         }
-                    </Swiper>
 
                 </div>
 
             </div>
-            <div className='mt-12 flex justify-center items-center'>
 
-                <NavLink className='flex items-center justify-between bg-gradient-to-r from-black from-35% to-blue-800 text-white font-open w-[250px] h-[40px] px-10 py-8 rounded-xl '> Explore Commercy <FaArrowRight to='/shop' /> </NavLink>
-
-            </div>
         </div>
     )
 }
