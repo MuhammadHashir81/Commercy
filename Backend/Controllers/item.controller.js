@@ -1,5 +1,6 @@
 import { UploadItem } from "../Model/UploadItem.Schema.js"
 import {body,validationResult} from 'express-validator'
+import { SellerUpload } from "../Seller/Model/SellerUpload.Model.js"
 
 
 export const itemUploadValidationRules = [
@@ -29,3 +30,92 @@ export const uploadItem = async (req,res)=>{
         res.status(500).json({error})
     }
 }
+
+
+// get all the items to display on main page
+
+
+export const getAllItems = async(req,res)=>{
+    try {
+        const allItems = await SellerUpload.find()
+        res.status(200).json({success:allItems})
+
+    } catch (error) {
+        res.status(500).json({error:"Internal server error"})
+        
+    }
+
+}
+
+// get the selected items by the user after checkout
+
+export const getSelectedItems = async(req,res)=>{
+    try {
+        const selectedItems = await SellerUpload.find({selected:true})
+        res.status(200).json({selectedItems})
+
+    } catch (error) {
+        res.status(500).json({error:"Internal server error"})
+        
+    }
+}
+
+
+// get single item 
+
+export const getSingleItem = async(req,res)=>{
+    const {id} = req.params
+    try {
+        
+        const getSingleItem = await SellerUpload.findById(id)
+        if (!getSingleItem) {
+            res.status(400).json({error:"Item not found"})
+        }
+        else{
+            res.status(200).json({getSingleItem})
+        }
+
+    } catch (error) {
+        res.status(500).json({error:"Internal server error"})
+        
+    }
+
+}
+
+
+
+
+
+// decrement seller inventory 
+
+
+    export const decrementInventory = async (req,res)=>{
+        const {id,quantity} = req.body
+
+        try {
+            const item = await SellerUpload.findById(id)
+            
+            if(!item){
+                res.status(400).json({error:"item not found"})
+            }
+            else{
+                if(item.inventory < quantity){
+                    res.status(400).json({error:"this is out of stock"})
+                }
+                item.inventory -= quantity
+                await item.save()
+                res.status(200).json({ success:item.inventory})
+            }
+            
+        } catch (error) {
+            res.status(500).json({error:error.message})
+            
+        }
+
+    }
+
+
+
+
+
+

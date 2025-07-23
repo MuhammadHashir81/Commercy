@@ -72,7 +72,7 @@
                 const findPassword = await bcrypt.compare(password, findEmail.password)
                 if (findPassword) {
                     const token = createToken(findEmail._id)
-                    const sendCookie = res.cookie('sellerrJWT', token, { httpOnly: true, maxAge: maxAge * 1000 })
+                    const sendCookie = res.cookie('sellerJWT', token, { httpOnly: true, maxAge: maxAge * 1000 })
                     res.status(200).json({ success: 'You are logged in successfully!' })
                     return
 
@@ -96,7 +96,7 @@
 
   export  const sellerLogOut = async(req,res)=>{
         try {
-            const user = res.cookie('sellerrJWT', '', { httpOnly: true, maxAge: 0 })
+            const user = res.cookie('sellerJWT', '', { httpOnly: true, maxAge: 0 })
 
             res.status(200).json({success:'logout successfully'})
         } catch (error) {

@@ -11,26 +11,31 @@ import { FaArrowRight } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AddToCartContext } from './ContextApi/AddToCart/AddToCartProvider';
+import { ShowItemsContext } from './ContextApi/ShowItems.jsx/ShowItems';
 
 
 const Main = () => {
     const {  addToCartFunc } = useContext(AddToCartContext)
-    const [fashion, setFashion] = useState([])
+    const [fashion,setFashion] = useState([])
+    console.log(fashion)
     const handleAddCart = (id) => {
         console.log(id)
         
    
     }
+useEffect(() => {
+  const fetchData = async () => {
+    const response = await fetch('images.json'); // fetch the file
+    const data = await response.json();         // extract JSON
+    setFashion(data);                           // set the data
+  };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const fetchingData = await fetch('images.json')
-            const result = await fetchingData.json()
-            setFashion(result)
+  fetchData();
+}, []);
 
-        }
-        fetchData()
-    }, [])
+    
+
+    
 
     // add to cart 
 
@@ -42,25 +47,30 @@ const Main = () => {
         <div className=' max-w-screen-2xl mx-auto px-10 py-6 '>
             <Commercy />
             <div className='mt-20'>   
+                <div className='flex mb-4 justify-between items-center'>
                 <h1 className='text-5xl font-bold mb-6'>Shop on Commercy </h1>
+                <div className='flex items-center space-x-2'>
+                 <NavLink to="/selecteditems" className='flex items-center space-x-2 bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg font-semibold)' ><p className='font-open'>Selected Items</p> <FaArrowRight  /></NavLink>   
+                <NavLink to="/allitems" className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg  )' ><p className='font-open'>Explore Commercy</p> </NavLink>
+                </div>
+                </div>
                 <div className='flex flex-wrap items-center bg-gray-100'>
                 
                         {
                             fashion.length > 0 && fashion.map((single, index) => (
-                                <div className='w-[30%]  m-3 bg-white p-4 '>
+                                <div className='w-[30%]  m-3 bg-white p-4 transition-all hover:scale-105 duration-200 ease-snappy' key={single.id} >
                                         <h3 className='text-2xl font-bold font-open my-4 '>{single.title}</h3>
-                                    <NavLink to={`$item/${single._id}`}>
-                                        <img src={single.image} className=' w-full h-[450px] object-cover  shadow-md' alt="" />
-                                    </NavLink>
-                                    {/* <div className='mt-2 text-center'> */}
-                                        <div className=''>
-                                        <NavLink
-                                         className=' font-semibold m-10 text-sm text-gray-600 font-open'>{single.description}</NavLink>
-                                        </div>
-                                        {/* <button onClick={() => handleAddToCart(single)} className='cursor-pointer bg-amber-500 text-black px-5 py-2 rounded-3xl ' >add to cart</button > */}
                                         <div>
-                                        {/* <span>  ${single.price}</span> */}
-                                        {/* </div> */}
+
+                                    <NavLink to={`/${single.category}`}>
+                                        <img src={single.image} className=' w-full h-[450px] object-cover  shadow-lg  ' alt="" />
+                                        <div className=''>
+                                        <p
+                                         className='hover:text-blue-500 font-semibold my-2 text-sm text-gray-600 font-open'>{single.description}</p>
+                                         </div>
+                                         </NavLink>
+                                        </div>
+                                        <div>
                                     </div>
                                 </div>
 

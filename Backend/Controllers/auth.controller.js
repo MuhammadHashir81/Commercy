@@ -51,7 +51,7 @@
             res.status(200).json({ success: "You are signed up successfully!" })
             console.log(res)
         } catch (error) {
-            res.status(500).json({ error: "Internal server error" })
+            res.status(500).json({ error: error.message })
             console.log(error)
 
         }

@@ -8,11 +8,14 @@ import AuthenticationProvider from './Components/ContextApi/AuthenticationProvid
 import AddToCartProvider from './Components/ContextApi/AddToCart/AddToCartProvider.jsx';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import SellerProvider from './Components/ContextApi/Seller/SellerProvider.jsx';
+import ShowItemsProvider from './Components/ContextApi/ShowItems.jsx/ShowItems.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId='489577581420-2oucd5ndaojgt4oquei56qf3a6maspqp.apps.googleusercontent.com'>
+      <ShowItemsProvider>
+
     <BrowserRouter>
     <SellerProvider>
     <AddToCartProvider>
@@ -22,6 +25,7 @@ createRoot(document.getElementById('root')).render(
     </AddToCartProvider>
     </SellerProvider>
     </BrowserRouter>
+      </ShowItemsProvider>
     </GoogleOAuthProvider>
   </StrictMode>,
 )

@@ -2,7 +2,7 @@
     {
         "id":"1",
         "title":"Try Men Wears",
-        "category":"winter",
+        "category":"men",
         "description":"explore more",
         "image":"https://images.unsplash.com/photo-1622519407650-3df9883f76a5?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "price":150
@@ -11,7 +11,7 @@
     {
         "id":"2",
         "title":"Get for your Kitchen",
-        "category":"winter",
+        "category":"kitchen",
         "description":"explore more",
         "image":"https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "price":250
@@ -20,7 +20,7 @@
     {
         "id":"3",
         "title":"Latest watches",
-        "category":"winter",
+        "category":"watches",
         "description":"explore more",
         "image":"https://plus.unsplash.com/premium_photo-1682097578070-901d10cabc5b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D  ",
         "price":350
@@ -30,7 +30,7 @@
     {
         "id":"4",
         "title":"Get some furniture",
-        "category":"winter",
+        "category":"furniture",
         "description":"explore more",
         "image":"http://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "price":100
@@ -39,7 +39,7 @@
     {
         "id":"5",
         "title":"Ehance your knowledge",
-        "category":"winter",
+        "category":"books",
         "description":"explore more",
         "image":"https://plus.unsplash.com/premium_photo-1669652639337-c513cc42ead6?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "price":50
@@ -48,7 +48,7 @@
     {
         "id":"6",
         "title":"Refresh you space",
-        "category":"winter",
+        "category":"perfumes",
         "description":"explore more",
         "image":"https://images.unsplash.com/photo-1724157073080-fcffb8d6c956?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "price":300

@@ -5,14 +5,12 @@ export const addCart = async (req,res)=>{
     const userId = req.userId
     const {items} = req.body
     console.log(items)
-
     try {
         const cart = await AddCart.findOne({userId})
         if (cart) {
             const exists =  cart.items.find(i => i.productId.toString()  === items.productId )
             console.log(req.user)
             if (exists) {
-                console.log("hashir")
                 res.status(400).json({error:"product already exists"})
                 return
                 
@@ -75,3 +73,8 @@ export const deleteSingleCartItem = async (req, res) => {
         res.status(500).json({ error:error.message });
     }
 };
+
+
+
+
+

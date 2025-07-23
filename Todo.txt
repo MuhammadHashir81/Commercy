@@ -1,0 +1,6 @@
+add quanity in add to cart 
+check either the addtocart and sellerupload are linked through database
+add a functionality that if a user buy a product it should be reduce in stock 
+attach addtocart and items model together
+delete the loginstatus when there is not jwt token in the session(on both seller side and buyer side)
+add protect route on frontend

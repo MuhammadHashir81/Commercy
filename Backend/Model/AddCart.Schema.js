@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const {Schema} = mongoose
 
 
-
+  
 const cartSchema = new Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
@@ -11,14 +11,21 @@ const cartSchema = new Schema({
     },
     items: [
     {
-  productId: { type: String, required: true },
-        title: String,
+  productId: 
+  { 
+    type: String,
+    required: true,
+
+}
+  ,
         description: String,
         image: String,
-        price:Number
+        price:Number,
+        quantity:Number,
         
     }
-]
+],
+ 
 
 })
 
