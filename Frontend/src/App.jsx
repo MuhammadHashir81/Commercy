@@ -70,6 +70,7 @@ function App() {
         <Route path='/signup' element={<Signup />}></Route>
 
         {/* start of seller routes */}
+
         <Route path='/sellerlogin' element={<SellerLogin />}></Route>
         <Route path='/sellersignup' element={<SellerSignup />}></Route>
         <Route path='selleraccount/startselling' element={<StartSelling />}></Route>

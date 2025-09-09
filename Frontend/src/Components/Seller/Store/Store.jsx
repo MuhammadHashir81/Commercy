@@ -22,6 +22,12 @@
             setSellerUpdateId('')
         }
 
+
+        // fetch user specific items
+
+        
+    
+
         const style = {
             position: 'absolute',
             top: '50%',
@@ -33,9 +39,9 @@
             p: 4,
         };
 
-            // useEffect(() => {
-            //     fetchUserSpecificItems()
-            // }, [])
+            useEffect(() => {
+                fetchUserSpecificItems()
+            }, [])
 
         // delete single item from seller product 
 

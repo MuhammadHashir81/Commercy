@@ -4,7 +4,9 @@ import { AddToCartContext } from './ContextApi/AddToCart/AddToCartProvider'
 import { NavLink } from 'react-router-dom'
 import { AuthenticationContext } from './ContextApi/AuthenticationProvider'
 import { ShowItemsContext } from './ContextApi/ShowItems.jsx/ShowItems'
+
 const AddToCart = () => {
+  
   const { cartItems,deletingSingleCartItem   } = useContext(AddToCartContext)
   const {isLoginUser} = useContext(AuthenticationContext)
   console.log(isLoginUser)
@@ -51,7 +53,7 @@ const AddToCart = () => {
             <h1 className='text-5xl  font-bold'>Cart Items</h1>
           ):(
             <div className='bg-black p-10 rounded-md'>
-              <h1 className='text-white text-3xl font-bold my-8'>Your cart is empty you have to login to see your cart</h1>
+              <h1 className='text-white text-3xl font-bold my-8'>Login to see your cart</h1>
               <NavLink className='font-semibold shadow-sm rounded-4xl  bg-amber-500 h-fit px-7 py-3 ' to='/signup' >Signup</NavLink>
             </div>
           )
@@ -79,7 +81,7 @@ const AddToCart = () => {
           <h4 className='font-medium'>subtotal</h4>
         <p>${totalPrice}</p>
           </div>
-         <NavLink type="button"  className="bg-blue-500 flex items-center px-5 text-md font-semibold cursor-pointer" onClick={handlePayment}>checkout</NavLink>
+         <button  disabled={!isLoginUser}  className="bg-blue-500 flex items-center px-5 text-md font-semibold " onClick={handlePayment}  >checkout</button>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ const MainDiv = () => {
         </div>
         <div className='w-[50%] my-4'>
 
-          <img src="https://images.unsplash.com/photo-1623120389902-6c846c80f4c8?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="seller image" className='rounded-md w-[500px] h-[450px] object-cover' />
+          <img src="https://media.istockphoto.com/id/1347494044/photo/smiling-young-asian-man-checking-electronic-banking-on-his-smartphone-as-he-received.webp?a=1&b=1&s=612x612&w=0&k=20&c=F4MBowFRoj4wWcMU1j2TvPCQWNcWA8FksRG4I1pt8ho=" alt="seller image" className='rounded-md w-[500px] h-[450px] object-cover' />
 
 
         </div>

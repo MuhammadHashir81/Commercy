@@ -9,7 +9,7 @@ const Perfumes = () => {
         fetchData()
     }, [])
 
-    const filtered = items.filter(item => item.category === 'perfume')
+    const filtered = items.filter(item => item.category === 'perfumes')
     console.log(filtered)
   return (
         <div className='max-w-screen-2xl mx-auto px-14 py-6'>

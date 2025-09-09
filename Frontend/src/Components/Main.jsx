@@ -50,7 +50,6 @@ useEffect(() => {
                 <div className='flex mb-4 justify-between items-center'>
                 <h1 className='text-5xl font-bold mb-6'>Shop on Commercy </h1>
                 <div className='flex items-center space-x-2'>
-                 <NavLink to="/selecteditems" className='flex items-center space-x-2 bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg font-semibold)' ><p className='font-open'>Selected Items</p> <FaArrowRight  /></NavLink>   
                 <NavLink to="/allitems" className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg  )' ><p className='font-open'>Explore Commercy</p> </NavLink>
                 </div>
                 </div>

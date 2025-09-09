@@ -89,7 +89,7 @@ const Commercy = () => {
 
         <div>
           <NavLink to="/perfumes">
-          <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1718466044521-d38654f3ba0a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", }} className='bg-gradient-to-r from-black  to-sky-900 p-24 text-center rounded-2xl shadow-sm  mx-3  h-[300px]   bg-contain'>
+          <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1718466044521-d38654f3ba0a?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", }} className='bg-gradient-to-r from-black  to-sky-900 p-24 text-center rounded-2xl shadow-sm  mx-3  h-[300px]    bg-contain'>
         <h1 className='text-4xl font-bold text-white font-primary '>perfumes</h1>
 
       </div>

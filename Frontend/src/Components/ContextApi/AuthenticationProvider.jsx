@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
-import { createContext, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
+import  { useContext,createContext, useState, useEffect  } from 'react'
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AddToCartContext } from './AddToCart/AddToCartProvider';
 
@@ -19,7 +18,7 @@ const AuthenticationProvider = ({ children }) => {
     const [isLoginUser, setIsLoginUser] = useState(
         localStorage.getItem('isLoginUser' || false)
     )
-    
+
 
     const { fetchingAllCartItems } = useContext(AddToCartContext)
     const [userCredentials, setUserCredentials] = useState({
@@ -41,10 +40,13 @@ const AuthenticationProvider = ({ children }) => {
         })
         if (loginUser.ok) {
             const result = await loginUser.json()
+            setIsLoginUser(true)
+            localStorage.setItem('isLoginUser', true)
             console.log(result)
             toast.success(result.success)
             setTimeout(() => {
-                navigate('/')
+                window.location.replace('/')
+                // navigate('/')
             }, 2000);
             setUserCredentials({
                 email: '',
@@ -80,7 +82,8 @@ const AuthenticationProvider = ({ children }) => {
             const result = await signupUser.json()
             console.log(signupUser)
             setTimeout(() => {
-                navigate('/login')
+                // navigate('/login')
+                window.reload('/login')
             }, 2000);
             console.log(result)
             toast.success(result.success)
@@ -118,7 +121,6 @@ const AuthenticationProvider = ({ children }) => {
 
             if (res.ok) {
                 console.log(data.user.picture);
-                fetchingAllCartItems()
                 setLoginPicture(data.user.picture)
                 localStorage.setItem('loginPicture', data.user.picture)
 
@@ -126,6 +128,7 @@ const AuthenticationProvider = ({ children }) => {
                 setIsLoginUser(true)
                 localStorage.setItem('isLoginUser', true)
                 navigate("/");
+                fetchingAllCartItems()
             } else {
                 console.error(data.error);
             }
@@ -147,21 +150,25 @@ const AuthenticationProvider = ({ children }) => {
 
         })
         if (response.ok) {
-             
+                window.location.reload('/')
+    
             const data = await response.json()
             console.log(data)
             toast.success(data.success)
-            
+
             localStorage.removeItem('loginPicture')
             setLoginPicture(null)
             setIsLoginUser(false)
             localStorage.removeItem('isLoginUser')
             fetchingAllCartItems()
         }
-        else{
+        else {
             toast.error("Something went wrong")
         }
     }
+
+
+
     return (
         <div>
             <AuthenticationContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, loginPicture, logOutUser, isLoginUser }}>

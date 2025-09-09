@@ -17,13 +17,13 @@ createRoot(document.getElementById('root')).render(
       <ShowItemsProvider>
 
     <BrowserRouter>
-    <SellerProvider>
     <AddToCartProvider>
     <AuthenticationProvider>  
+      <SellerProvider>
     <App />
+      </SellerProvider>
     </AuthenticationProvider>
     </AddToCartProvider>
-    </SellerProvider>
     </BrowserRouter>
       </ShowItemsProvider>
     </GoogleOAuthProvider>

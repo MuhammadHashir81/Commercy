@@ -196,6 +196,32 @@ const SellerProvider = ({ children }) => {
 
     // seller upload product 
 
+
+    // fetching user specific items
+
+    const fetchUserSpecificItems = async () => {
+        const response = await fetch("http://localhost:5000/seller/allitems", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include"
+
+        })
+        if (response.ok) {
+            const data = await response.json()
+            setSellerProductArray(data.success)
+            console.log("Fetched items:", data.success);
+        } else {
+            const data = await response.json()
+            console.error("Error:", data);
+            // toast.error(data.error);
+        }
+
+
+    }
+
+    
     const sellerProductUpload = async (formData) => {
         const response = await fetch('http://localhost:5000/seller/upload-product', {
             "method": "POST",
@@ -217,41 +243,13 @@ const SellerProvider = ({ children }) => {
                 navigate('/selleraccount/store')
 
             }, 3000);
+            fetchUserSpecificItems()
             }
         else if (response.status === 400) {
             const data = await response.json()
             toast.error(data.error)
         }
     }
-
-    // fetching user specific items
-
-    const fetchUserSpecificItems = async () => {
-        const response = await fetch("http://localhost:5000/seller/allitems", {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: "include"
-
-        })
-        if (response.ok) {
-            const data = await response.json()
-            setSellerProductArray(data.success)
-            console.log("Fetched items:", data.success);
-        } else {
-            const data = await response.json()
-            console.error("Error:", data);
-            toast.error(data.error);
-        }
-
-
-    }
-
-    useEffect(() => {
-    fetchUserSpecificItems()  
-    }, [])
-    
 
     // delete seller relavent item
 
@@ -292,7 +290,7 @@ const SellerProvider = ({ children }) => {
 
     return (
         <div>
-            <SellerContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, sellerLoginPicture, logOutUser, sellerLoginStatus, sellerCredentials, setSellerCredentials, sellerProductUpload,  userItems, setUserItems, sellerProductArray, sellerDeleteItem, sellerUpdateItem }}>
+            <SellerContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, sellerLoginPicture, logOutUser, sellerLoginStatus, sellerCredentials, setSellerCredentials, sellerProductUpload,  userItems, setUserItems, sellerProductArray, sellerDeleteItem, sellerUpdateItem,fetchUserSpecificItems }}>
                 {children}
             </SellerContext.Provider>
         </div>

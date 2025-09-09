@@ -73,28 +73,31 @@ const Navbar = () => {
             {!isLoginUser? (
 
               <NavLink to='/login'>
-
-                <FaUser size={20} />
+                <button className='bg-amber-500 w-[100px] h-[40px] rounded-md cursor-pointer'>login</button>
 
               </NavLink>
             )
               : (
-                <div className='relative' onClick={handleDropDown}>
+                // <div className='relative' onClick={handleDropDown}>
 
 
-                  <img
-                    srcSet={loginPicture}
-                    alt="picture" className={`transition-all duration-1000 animate-fade-in w-8 h-8 rounded-full cursor-pointer `}
 
-                  />
+                //   <img
+                //     srcSet={loginPicture}
+                //     alt="picture" className={`transition-all duration-1000 animate-fade-in w-8 h-8 rounded-full cursor-pointer `}
+
+                //   />
 
 
-                  <div className={`z-50 mt-2 absolute w-20  px-3 py-2  ${isDropDown ? "block" : "hidden"} bg-amber-500 rounded-sm`}>
-                    <button onClick={handleLogOut} className='  flex items-center cursor-pointer space-x-14 '>  <MdLogout />
-                      logout</button>
-                  </div>
+                //   <div className={`z-50 mt-2 absolute w-20  px-3 py-2  ${isDropDown ? "block" : "hidden"} bg-amber-500 rounded-sm`}>
+                //     <button onClick={handleLogOut} className='  flex items-center cursor-pointer space-x-14 '>  <MdLogout />
+                //       logout</button>
+                //   </div>
 
-                </div>
+                // </div> 
+                
+
+                <button className='bg-amber-500 w-[100px] h-[40px] rounded-md cursor-pointer' onClick={handleLogOut}>logout</button>
 
 
               )
