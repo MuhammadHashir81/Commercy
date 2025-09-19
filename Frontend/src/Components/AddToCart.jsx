@@ -8,6 +8,7 @@ import { ShowItemsContext } from './ContextApi/ShowItems.jsx/ShowItems'
 const AddToCart = () => {
   
   const { cartItems,deletingSingleCartItem   } = useContext(AddToCartContext)
+  const {decrementInventory,singleItem} = useContext(ShowItemsContext)
   const {isLoginUser} = useContext(AuthenticationContext)
   console.log(isLoginUser)
   console.log(cartItems)
@@ -23,22 +24,22 @@ const AddToCart = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        amount: totalPrice, // $20
-        name: "My Product",
+      items:cartItems
+        
       }),
+      credentials: "include"
     });
-     console.log(response)
     const data = await response.json();
-    if (data.url) {
+     console.log(response)
+     if (data.url) {
       window.location.href = data.url; 
+      decrementInventory(singleItem._id)
     }
   };
 
   // Stripe Payment Function
 
-
-
-  const handleDelete = (id)=>{
+const handleDelete = (id)=>{
         deletingSingleCartItem(id)
   }
 
@@ -81,7 +82,7 @@ const AddToCart = () => {
           <h4 className='font-medium'>subtotal</h4>
         <p>${totalPrice}</p>
           </div>
-         <button  disabled={!isLoginUser}  className="bg-blue-500 flex items-center px-5 text-md font-semibold " onClick={handlePayment}  >checkout</button>
+         <button  disabled={!isLoginUser}  className={`${!isLoginUser ? 'bg-gray-300' : 'bg-blue-500'} flex items-center px-5 text-md font-semibold cursor-pointer  `} onClick={()=>handlePayment()}  >checkout</button>
         </div>
       </div>
     </div>
@@ -90,3 +91,12 @@ const AddToCart = () => {
 }
 
 export default AddToCart
+
+
+
+
+
+
+
+
+

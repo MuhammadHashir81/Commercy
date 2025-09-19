@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addCart, deleteSingleCartItem, fetchAllCartItems } from "../Controllers/cart.controller.js";
-import { verifyToken } from "../Middleware/middleware.js";
+import { verifyToken } from "../Middleware/verifyToken.js";
 import multer from 'multer'
 
 

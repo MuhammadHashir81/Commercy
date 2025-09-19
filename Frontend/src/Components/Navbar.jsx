@@ -97,7 +97,7 @@ const Navbar = () => {
                 // </div> 
                 
 
-                <button className='bg-amber-500 w-[100px] h-[40px] rounded-md cursor-pointer' onClick={handleLogOut}>logout</button>
+                <button className='bg-red-500 w-[100px] h-[40px] rounded-md cursor-pointer' onClick={handleLogOut}>logout</button>
 
 
               )

@@ -23,14 +23,21 @@ const Watches = () => {
                 {
                     filtered.length > 0 && filtered.map((single, index) => (
                         <>
-                            <div className='w-[30%]  m-3 bg-white p-4' key={single._id} >
+                            <div className='w-[30%]  m-3 bg-white p-4 ' key={single._id}  >
                                 <NavLink to={`/single/${single._id}` }>
 
                                 <img src={`http://localhost:5000/uploads/${single.image}`} alt="image not uploaded" className=' w-full h-[350px] object-cover  shadow-md' />
                                 </NavLink>
                                 <div className=''>
                                     <p
-                                        className='text-md font-normal my-2 text-gray-600 font-primary'>{single.description}</p>
+                                        className='break-words text-md font-normal my-2 text-gray-600 font-primary'>{
+
+                                            single.description.split(" ").length > 6 ? 
+                                            single.description.split(" ").slice(0,6).join(" ") + "....":
+                                            single.description
+                                            
+                                        }
+                                        </p>
                                         <p>Total Stock{single.inventory}</p>
                                 </div>
 

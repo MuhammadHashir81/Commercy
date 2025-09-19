@@ -28,14 +28,13 @@
             // setCartItems(result)
             console.log(result)
         
-        if (fetching.ok) {
+        if (fetching.ok)     {
             setProductSuccess(result.success);
             Swal.fire({
                 icon: "success",
                 title: "Success",
                 text: result.success
             });
-            decrementInventory(singleItem._id,productQuantity)
             console.log(result);
         } else if (fetching.status === 400 || fetching.status === 404) {
             setProductSuccess(result.error);

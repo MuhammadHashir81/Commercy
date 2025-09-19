@@ -101,6 +101,7 @@
             res.status(200).json({success:'logout successfully'})
         } catch (error) {
             res.status(500).json({error:error.message})
+            console.log(error.message)
 
             
         }

@@ -9,6 +9,13 @@
     const Store = () => {
         const navigate = useNavigate()
         const { fetchUserSpecificItems, sellerProductArray, sellerDeleteItem, sellerUpdateItem } = useContext(SellerContext)
+
+                const handleFetchUserSpecificItems = ()=>{
+                        fetchUserSpecificItems()
+                    
+            }
+
+
         const [sellerUpdatedItem, setsellerUpdatedItem] = useState({})
         const [sellerUpdateId,setSellerUpdateId] = useState('')
         const [open, setOpen] = React.useState(false);
@@ -39,9 +46,6 @@
             p: 4,
         };
 
-            useEffect(() => {
-                fetchUserSpecificItems()
-            }, [])
 
         // delete single item from seller product 
 
@@ -133,9 +137,11 @@
 
                     <h1 className='text-5xl font-bold '>Manage Your Products</h1>
                     <div className='flex space-x-3'>
+                    <button className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg font-semibold )' onClick={handleFetchUserSpecificItems}>Load Items</button>
                     <button className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg font-semibold )' onClick={handleAddItem}>Add Item</button>
                     </div>
                     </div>
+
                     <div className='grid grid-cols-3 '>
                         {
                             sellerProductArray.length === 0 && (
