@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser'
 import { sellerRouter } from './Seller/Routes/Seller.routes.js'
 import path from "path";
 import { stripeRouter } from './StripeGateWay.js/stripe.route.js'
+import specificItems from './Routes/userspecificitems.route.js'
 const app = express()
 const port = 5000
 
@@ -41,6 +42,7 @@ app.use('/items',itemRouter)
 app.use('/cart',cartRouter)
 app.use('/seller',sellerRouter)
 app.use('/payment',stripeRouter)
+app.use('/api',specificItems)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

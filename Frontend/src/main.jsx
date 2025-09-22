@@ -9,12 +9,14 @@ import AddToCartProvider from './Components/ContextApi/AddToCart/AddToCartProvid
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import SellerProvider from './Components/ContextApi/Seller/SellerProvider.jsx';
 import ShowItemsProvider from './Components/ContextApi/ShowItems.jsx/ShowItems.jsx';
-
+import { StripePostPaymentProvider } from './Components/ContextApi/StripePostPaymentProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId='489577581420-2oucd5ndaojgt4oquei56qf3a6maspqp.apps.googleusercontent.com'>
       <ShowItemsProvider>
+        <StripePostPaymentProvider>
+
 
     <BrowserRouter>
     <AddToCartProvider>
@@ -25,6 +27,8 @@ createRoot(document.getElementById('root')).render(
     </AuthenticationProvider>
     </AddToCartProvider>
     </BrowserRouter>
+        </StripePostPaymentProvider>
+
       </ShowItemsProvider>
     </GoogleOAuthProvider>
   </StrictMode>,

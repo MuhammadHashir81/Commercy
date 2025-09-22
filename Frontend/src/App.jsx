@@ -32,6 +32,7 @@ import { useContext } from 'react';
 import { SellerContext } from './Components/ContextApi/Seller/SellerProvider';
 import { Navigate } from 'react-router'; 
 import SelectedItems from './Components/SelectedItems';
+import BookedItems from './Components/BookedItems';
 function App() {
 
   const { sellerLoginStatus } = useContext(SellerContext)
@@ -65,6 +66,7 @@ function App() {
           <Route path='/watches' element={<Watches/>} />
           <Route path='/single/:id' element={<GetSingleItem/>} />
           <Route path='/selecteditems' element={<SelectedItems/>} />
+          <Route path='/booked-items' element={<BookedItems/>} />
         </Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>

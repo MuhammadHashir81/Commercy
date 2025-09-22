@@ -45,12 +45,14 @@ useEffect(() => {
     }
     return (
         <div className=' max-w-screen-2xl mx-auto px-10 py-6 '>
+
             <Commercy />
             <div className='mt-20'>   
                 <div className='flex mb-4 justify-between items-center'>
                 <h1 className='text-5xl font-bold mb-6'>Shop on Commercy </h1>
                 <div className='flex items-center space-x-2'>
-                <NavLink to="/allitems" className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg  )' ><p className='font-open'>Explore Commercy</p> </NavLink>
+                <NavLink to="/booked-items" className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg  )' ><span className='font-open'>Booked Items</span> </NavLink>
+                <NavLink to="/allitems" className='bg-amber-500 px-10 py-2 cursor-pointer  mt-3 text-lg  )' ><span className='font-open'>Explore Commercy</span> </NavLink>
                 </div>
                 </div>
                 <div className='flex flex-wrap items-center bg-gray-100'>
