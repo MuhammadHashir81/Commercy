@@ -23,8 +23,9 @@ const SellerNavbar = () => {
             <h3 className='font-bold font-primary text-4xl text-amber-500' >Commercy </h3>
           </NavLink>
           <ul className=' w-full flex items-center space-x-5'>
-            <li className='font-primary font-semibold'><NavLink to="/selleraccount/startselling">Start Selling</NavLink></li>
-            <li className='font-primary font-semibold'><NavLink to="store"> Store</NavLink></li>
+            <li className='font-primary '><NavLink to="/selleraccount/startselling">Start Selling</NavLink></li>
+            <li className='font-primary '><NavLink to="store"> Store</NavLink></li>
+            <li className='font-primary '><NavLink to="dashboard">Dashboard</NavLink></li>
           </ul>
           <div className='flex space-x-2  h-[40px] '>
             {

@@ -11,6 +11,7 @@ export const handleStripe = async (req, res) => {
   console.log(id);
 
   const findEmail = await User.findById(id)
+  console.log(findEmail)
   const { items } = req.body;
 
   try {

@@ -33,6 +33,7 @@ import { SellerContext } from './Components/ContextApi/Seller/SellerProvider';
 import { Navigate } from 'react-router'; 
 import SelectedItems from './Components/SelectedItems';
 import BookedItems from './Components/BookedItems';
+import Dashboard from './Components/Seller/Store/Dashboard';
 function App() {
 
   const { sellerLoginStatus } = useContext(SellerContext)
@@ -84,6 +85,7 @@ function App() {
             <Store />
             </ProtectedRoute>
             } />
+          <Route path='dashboard' element={<Dashboard/>} />
         </Route>
 
         {/* end of seller routes */}
