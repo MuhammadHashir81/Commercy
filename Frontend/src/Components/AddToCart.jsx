@@ -8,6 +8,7 @@ import { ShowItemsContext } from './ContextApi/ShowItems.jsx/ShowItems'
 const AddToCart = () => {
   
   const { cartItems,deletingSingleCartItem   } = useContext(AddToCartContext)
+  console.log(cartItems)
   const {decrementInventory,singleItem} = useContext(ShowItemsContext)
   const {isLoginUser} = useContext(AuthenticationContext)
   console.log(isLoginUser)
@@ -19,7 +20,7 @@ const AddToCart = () => {
 
   const handlePayment = async () => {
     const response = await fetch("http://localhost:5000/payment/create-checkout-session", {
-      method: "POST",
+      method: "POST", 
       headers: {
         "Content-Type": "application/json",
       },

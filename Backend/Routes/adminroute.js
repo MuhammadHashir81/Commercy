@@ -1,5 +1,6 @@
-import { Router } from "express";
-const adminRouter = Router();
+// import { Router } from "express";
+// import { getAllItems } from "../Controllers/admin.controller.js";
+// export const adminRouter = Router();
 
 
-adminRouter.get("/allitems",getAllItems)
+// adminRouter.get("/allitems",getAllItems)

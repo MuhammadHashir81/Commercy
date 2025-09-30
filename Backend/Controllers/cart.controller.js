@@ -1,6 +1,9 @@
 
 import { AddCart } from "../Model/AddCart.Schema.js" 
 import mongoose from "mongoose"
+
+
+// add to cart
 export const addCart = async (req,res)=>{
     const userId = req.userId
     const {items} = req.body
@@ -47,6 +50,8 @@ export  const fetchAllCartItems = async (req,res)=>{
     }
 
 }
+
+// deleting items from cart
 
 
 export const deleteSingleCartItem = async (req, res) => {

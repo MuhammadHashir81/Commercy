@@ -8,10 +8,9 @@ const stripe = new Stripe("sk_test_51NvjZoAjmegtlXAVOCeHMz04cQtIO8BFQrasBfB1eruQ
 
 export const handleStripe = async (req, res) => {
   const id = req.userId
-  console.log(id);
 
   const findEmail = await User.findById(id)
-  console.log(findEmail)
+  
   const { items } = req.body;
 
   try {
@@ -26,11 +25,7 @@ export const handleStripe = async (req, res) => {
       quantity: item.quantity, // quantity of item
     }));
 
-    const session = await stripe.checkout.sessions.create({
-
-
-
-
+      const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
       customer_email: findEmail.email,
@@ -38,7 +33,8 @@ export const handleStripe = async (req, res) => {
       cancel_url: "http://localhost:3000/cancel",
 
       metadata: {
-        userId: id
+        userId: id,       
+        productIds: items.map(item => item.productId).join(",") // send comma-separated IDs
       }
     });
 
@@ -85,6 +81,8 @@ export const handlePostStripe = async (req, res) => {
     const id = session.metadata.userId
 
     const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
+      const productIds = session.metadata.productIds.split(",");
+
 
     const items = lineItems.data.map((item) => {
       return {
@@ -105,9 +103,11 @@ export const handlePostStripe = async (req, res) => {
       items,
       customerEmail,
       customerName,
-      totalAmount
+      totalAmount,
+      productIds
     })
-    console.log(saveData);
+
+    console.log(saveData)
     
     res.status(200).json({saveData});
 

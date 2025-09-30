@@ -4,6 +4,7 @@ import { sellerGoogleLogin,sellerLogOut,sellerLogin,sellerSignup,sellerValidatio
 import { verifySellerToken } from '../Middleware/Seller.Midldware.js'
 import { deleteSellerItem, fetchUserSpecificItems, sellerUpload, updateSellerItem } from '../Controllers/SellerProduct.controller.js'
 import { sellerProductValidationRules } from '../Controllers/SellerProduct.controller.js'
+import { getAllSellerItems } from '../../Controllers/seller.controller.js'
 import multer from 'multer'
 
 
@@ -40,3 +41,10 @@ sellerRouter.delete('/delete-item/:id',verifySellerToken,deleteSellerItem)
 // update item in seller product
 
 sellerRouter.put('/update-item/:id',verifySellerToken,upload.single("image"),updateSellerItem)
+
+
+
+// get seller specific items
+
+
+sellerRouter.get('/get-items',verifySellerToken,getAllSellerItems)

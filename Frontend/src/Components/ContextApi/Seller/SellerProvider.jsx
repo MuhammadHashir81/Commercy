@@ -288,9 +288,26 @@ const SellerProvider = ({ children }) => {
 
     }
 
+    const getAllItems = async () => {
+        const response = await fetch(`http://localhost:5000/seller/get-items`, {
+            method: 'GET',
+            credentials: 'include'
+        })
+        const data = await response.json()
+        console.log(data)
+
+    }
+
+    // get all the booked items of the seller
+
+
+
+
+    
+
     return (
         <div>
-            <SellerContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, sellerLoginPicture, logOutUser, sellerLoginStatus, sellerCredentials, setSellerCredentials, sellerProductUpload,  userItems, setUserItems, sellerProductArray, sellerDeleteItem, sellerUpdateItem,fetchUserSpecificItems }}>
+            <SellerContext.Provider value={{ handleSignUpUser, handleLoginUser, userCredentials, setUserCredentials, handleGoogleLoginSuccess, sellerLoginPicture, logOutUser, sellerLoginStatus, sellerCredentials, setSellerCredentials, sellerProductUpload,  userItems, setUserItems, sellerProductArray, sellerDeleteItem, sellerUpdateItem,fetchUserSpecificItems,getAllItems }}>
                 {children}
             </SellerContext.Provider>
         </div>
