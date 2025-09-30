@@ -8,13 +8,13 @@
             required: true
 
         },
-        productIds:
+        productIds:[
           {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'UploadItem',
             required: true
-        },
-    
+        }
+    ],
         items:[
             {
                 amountSubtotal:String,
