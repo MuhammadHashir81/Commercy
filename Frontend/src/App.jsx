@@ -85,7 +85,7 @@ function App() {
             <Store />
             </ProtectedRoute>
             } />
-          <Route path='dashboard' element={<Dashboard/>} />
+          {/* <Route path='dashboard' element={<Dashboard/>} /> */}
         </Route>
 
         {/* end of seller routes */}

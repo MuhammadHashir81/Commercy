@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
 
-    <div className='max-w-screen-2xl mx-auto px-14 py-6' >
+    <div className='max-w-screen-2xl mx-auto px-14 py-6 ' >
 
 
 
@@ -55,7 +55,7 @@ const Navbar = () => {
         </div>
         <form >
           <label htmlFor="" value>
-            <input type="text" placeholder='search your favourite' className='outline-none bg-gray-100  rounded-full px-4  w-[700px] py-3' />
+            <input type="text" placeholder='search your favourite' className='outline-none bg-gray-100  rounded-full px-4  w-[600px] py-3' />
           </label>
         </form>
         <div className=''>
@@ -78,24 +78,6 @@ const Navbar = () => {
               </NavLink>
             )
               : (
-                // <div className='relative' onClick={handleDropDown}>
-
-
-
-                //   <img
-                //     srcSet={loginPicture}
-                //     alt="picture" className={`transition-all duration-1000 animate-fade-in w-8 h-8 rounded-full cursor-pointer `}
-
-                //   />
-
-
-                //   <div className={`z-50 mt-2 absolute w-20  px-3 py-2  ${isDropDown ? "block" : "hidden"} bg-amber-500 rounded-sm`}>
-                //     <button onClick={handleLogOut} className='  flex items-center cursor-pointer space-x-14 '>  <MdLogout />
-                //       logout</button>
-                //   </div>
-
-                // </div> 
-                
 
                 <button className='bg-red-500 w-[100px] h-[40px] rounded-md cursor-pointer' onClick={handleLogOut}>logout</button>
 

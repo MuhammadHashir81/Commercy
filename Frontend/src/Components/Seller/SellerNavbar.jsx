@@ -25,7 +25,7 @@ const SellerNavbar = () => {
           <ul className=' w-full flex items-center space-x-5'>
             <li className='font-primary '><NavLink to="/selleraccount/startselling">Start Selling</NavLink></li>
             <li className='font-primary '><NavLink to="store"> Store</NavLink></li>
-            <li className='font-primary '><NavLink to="dashboard">Dashboard</NavLink></li>
+            {/* <li className='font-primary '><NavLink to="dashboard">Dashboard</NavLink></li> */}
           </ul>
           <div className='flex space-x-2  h-[40px] '>
             {
@@ -36,16 +36,12 @@ const SellerNavbar = () => {
                   </>
               ):(
                 <div className='flex items-center space-x-3'>
-                <button className='bg-red-500 rounded-md px-3 text-white cursor-pointer py-2' onClick={handleSellerLogout}>logout</button>
+                <button className='bg-red-500 rounded-md px-4 text-white cursor-pointer py-2' onClick={handleSellerLogout}>logout</button>
+
                 
                 </div>
               )
             }
-            {
-                 sellerLoginStatus && sellerLoginPicture && (
-                    <img src={sellerLoginPicture} alt="sellerloginpircure" className='rounded-full'/>
-                  )
-                }
           </div>
         </div>
 
