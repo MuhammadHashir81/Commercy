@@ -153,10 +153,10 @@
                         {
                             sellerProductArray.map((item) => (
                                 <div className='my-10 ' key={item._id} >
-                                    <div className='w-fit  bg-gray-100 p-6 break-words'>
+                                    <div className='w-fit   bg-gray-100 p-6 break-words'>
                                         <div className='w-[300px]'>
 
-                                            <img  src={`http://localhost:5000/uploads/${item.image}`} alt="image not uploaded" />
+                                            <img  src={`http://localhost:5000/uploads/${item.image}`} alt="image not uploaded" className='h-[350px] w-full object-cover' />
                                             <p className='mt-5'>{item.description}</p>
                                             <div className='mt-3'>
                                                 <p className='font-semibold text-lg'>total stock {item.inventory}</p>

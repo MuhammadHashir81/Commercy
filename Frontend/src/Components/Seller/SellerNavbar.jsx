@@ -51,4 +51,5 @@ const SellerNavbar = () => {
   )
 }
 
+
 export default SellerNavbar
