@@ -34,6 +34,7 @@ import { Navigate } from 'react-router';
 import SelectedItems from './Components/SelectedItems';
 import BookedItems from './Components/BookedItems';
 import Dashboard from './Components/Seller/Store/Dashboard';
+import PaymentSuccess from './Components/PaymentSuccess';
 function App() {
 
   const { sellerLoginStatus } = useContext(SellerContext)
@@ -91,6 +92,7 @@ function App() {
         {/* end of seller routes */}
 
         <Route path='/payment' element={<Gateway/>}></Route>
+        <Route path='/payment-success' element={<PaymentSuccess/>}/>
 
 
       </Routes>

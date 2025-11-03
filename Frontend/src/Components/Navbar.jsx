@@ -45,17 +45,17 @@ const Navbar = () => {
 
 
       <Toaster />
-      <div className='flex justify-between  items-center'>
+      <div className='flex justify-between  items-center  '>
 
 
         <div className='logo '>
           <NavLink to='/'>
-            <h3 className='font-bold font-primary text-4xl text-amber-500'>Commercy </h3>
+            <h3 className='font-bold font-primary text-4xl text-amber-500 '>Commercy </h3>
           </NavLink>
         </div>
         <form >
           <label htmlFor="" value>
-            <input type="text" placeholder='search your favourite' className='outline-none bg-gray-100  rounded-full px-4  w-[600px] py-3' />
+            <input type="text" placeholder='search your favourite' className='outline-none bg-gray-100  rounded-full px-4  w-[550px] py-3' />
           </label>
         </form>
         <div className=''>

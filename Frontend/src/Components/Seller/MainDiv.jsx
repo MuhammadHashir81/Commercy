@@ -1,6 +1,7 @@
 import React from 'react'
 import { Toaster } from 'react-hot-toast'
 import { NavLink } from 'react-router-dom'
+import image from '../../../public/sellerimage.png'
 const MainDiv = () => {
   return (
     <div>
@@ -18,7 +19,7 @@ const MainDiv = () => {
         </div>
         <div className='w-[50%] my-4'>
 
-          <img src="https://media.istockphoto.com/id/1347494044/photo/smiling-young-asian-man-checking-electronic-banking-on-his-smartphone-as-he-received.webp?a=1&b=1&s=612x612&w=0&k=20&c=F4MBowFRoj4wWcMU1j2TvPCQWNcWA8FksRG4I1pt8ho=" alt="seller image" className='rounded-md w-[500px] h-[450px] object-cover' />
+          <img src={image} alt="seller image" className='rounded-md w-[500px] h-[450px] object-cover' />
 
 
         </div>

@@ -15,10 +15,10 @@ const BookedItems = () => {
     handlePostPayment();
   }, []);
 
-  console.log(bookedItems);
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-14 py-6">
+
+    <div className="min-h-[85vh] max-w-screen-2xl mx-auto px-14 py-6">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -46,9 +46,7 @@ const BookedItems = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <h3 className="text-2xl font-semibold mt-4 text-gray-800">Total Amount Paid:
-  ${ bookedItems && bookedItems.length > 0 && bookedItems[0].totalAmount / 100}
-</h3>
+
 
     </div>
   );

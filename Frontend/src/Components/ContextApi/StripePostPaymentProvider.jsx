@@ -18,7 +18,6 @@ export const StripePostPaymentProvider = ({children})=>{
         })
         const data = await response.json()
         setBookedItems(data.data)
-        console.log(data.data[0].totalAmount);
 }
 
 

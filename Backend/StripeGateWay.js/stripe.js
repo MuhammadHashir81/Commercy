@@ -29,7 +29,7 @@ export const handleStripe = async (req, res) => {
       line_items: lineItems,
       mode: "payment",
       customer_email: findEmail.email,
-      success_url: "http://localhost:5173/",
+      success_url: "http://localhost:5173/payment-success",
       cancel_url: "http://localhost:3000/cancel",
 
       metadata: {

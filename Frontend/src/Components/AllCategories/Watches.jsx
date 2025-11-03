@@ -32,8 +32,6 @@ const Watches = () => {
                                     <p
                                         className='break-words text-md font-normal my-2 text-gray-600 font-primary'>{
 
-                                            single.description.split(" ").length > 6 ? 
-                                            single.description.split(" ").slice(0,6).join(" ") + "....":
                                             single.description
                                             
                                         }

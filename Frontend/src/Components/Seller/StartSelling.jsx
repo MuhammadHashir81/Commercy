@@ -2,6 +2,7 @@
     import { FaUpload } from "react-icons/fa6";
     import { SellerContext } from '../ContextApi/Seller/SellerProvider';
     import { Toaster } from 'react-hot-toast';
+    import image from '../../../public/storeimage.png'
 
     const StartSelling = () => {
         const { sellerCredentials, setSellerCredentials, sellerProductUpload } = useContext(SellerContext)
@@ -40,7 +41,7 @@
                 <Toaster/>
                 <div className='flex space-x-24'>
 
-                    <img src="https://plus.unsplash.com/premium_photo-1681426710520-7c56c9f563d2?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className='w-[50%] rounded-md' />
+                    <img src={image} alt="no image" className='w-[50%] object-cover rounded-md' />
                     <div className=''>
 
                         <h1 className='text-5xl font-bold '>Start Selling on Commercy </h1>

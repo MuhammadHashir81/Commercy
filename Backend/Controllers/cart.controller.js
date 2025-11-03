@@ -83,3 +83,17 @@ export const deleteSingleCartItem = async (req, res) => {
 
 
 
+// Clear all cart items for a user
+export const clearCart = async (req, res) => {
+    try {
+        const userId = req.userId;
+        
+        // Delete all cart items for this user
+        await AddCart.deleteMany({ userId });
+        
+        res.status(200).json({ success: 'Cart cleared successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Server error', message: error.message });
+        console.log(error.message);
+    }
+}

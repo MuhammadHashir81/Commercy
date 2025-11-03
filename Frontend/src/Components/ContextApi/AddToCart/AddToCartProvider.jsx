@@ -87,6 +87,19 @@
 
             }
 
+           const deletingAllCartItems = async ()=>{
+               const fetching = await fetch("http://localhost:5000/cart/delete-cart", {
+                   method:'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include'
+                })
+
+                const result = await fetching.json()
+                console.log(result)
+           }
+
             useEffect(() => {
             
             fetchingAllCartItems()
@@ -94,7 +107,7 @@
             
         return (
             <div>
-                <AddToCartContext.Provider value={{ selectedItems, setSelectedItems, addToCartFunc, cartItems, productSuccess,deletingSingleCartItem,setCartItems}}>
+                <AddToCartContext.Provider value={{ selectedItems, setSelectedItems, addToCartFunc, cartItems, productSuccess,deletingSingleCartItem,setCartItems,deletingAllCartItems}}>
                     {children}
                 </AddToCartContext.Provider>
             </div>
